@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "alimentation-app",
-    "slug": "alimentation-app",
+    "name": "alimentation-app-frontend",
+    "slug": "alimentation-app-frontend",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
