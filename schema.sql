@@ -53,7 +53,6 @@ CREATE TABLE calendars (
 CREATE TABLE progress_records (
     id SERIAL PRIMARY KEY,        -- Identificador único del registro
     user_id INT NOT NULL,                  -- Relación con la tabla de usuarios
-    date DATE NOT NULL,                    -- Fecha del progreso
     calories_consumed INT,                 -- Calorías consumidas en el día
     is_completed BOOLEAN DEFAULT FALSE,    -- Si el día ha sido marcado como cumplido
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
