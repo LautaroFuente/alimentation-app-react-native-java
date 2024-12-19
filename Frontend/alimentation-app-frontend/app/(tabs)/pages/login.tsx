@@ -1,10 +1,10 @@
 import { View } from 'react-native';
-import RegisterLogin from '../components/registerLogin';
+import LoginForm from '../components/loginForm';
 
 function Login() {
     return ( 
         <View>
-            <RegisterLogin />
+            <LoginForm />
         </View>
      );
 }
