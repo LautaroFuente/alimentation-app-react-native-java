@@ -1,8 +1,11 @@
 import { Text, View, TextInput, Button } from "react-native";
 import { useForm } from "../hooks/useForm";
 import ErrorMessage from "./errorMessage";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigation } from "expo-router";
+import { fetchGeneric } from "../helpers/fetchGeneric.js";
+import { UserContext } from "../contexts/userContext";
+import { userSchema } from "../schemas/User";
 
 const initialForm = {
     email: "",
@@ -22,6 +25,8 @@ const LoginForm: React.FC = () => {
     const [formErrorServer, setFormErrorServer] = useState(false);  
     const [userNotRegistered, setUserNotRegistered] = useState({state:false, message:""});  
 
+    const {stateUser, dispatchUser} = useContext(UserContext);
+
     const navigate = useNavigation();
     
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +37,7 @@ const LoginForm: React.FC = () => {
               state: false,
               message: "",
             });
-            const result = validateLoguinUserData(form);
+            const result = userSchema.parse(form);
             if (result.success) {
               try {
                 console.log(`Validacion correcta`);
