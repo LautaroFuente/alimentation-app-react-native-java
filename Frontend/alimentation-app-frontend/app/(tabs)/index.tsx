@@ -14,13 +14,13 @@ export default function HomeScreen() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="register" component={Register} />
-        <Stack.Screen name="login" component={Login} />
-        <Stack.Screen name="calendar-diet" component={CalendarDiet} />
-        <Stack.Screen name="login-menu" component={LoginMenu} />
-        <Stack.Screen name="view-foods" component={ViewFoods} />
-        <Stack.Screen name="view-one-food" component={ViewOneFood} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Calendar-diet" component={CalendarDiet} />
+        <Stack.Screen name="Login-menu" component={LoginMenu} />
+        <Stack.Screen name="View-foods" component={ViewFoods} />
+        <Stack.Screen name="View-one-food" component={ViewOneFood} />
       </Stack.Navigator>
     </NavigationContainer>
   );
