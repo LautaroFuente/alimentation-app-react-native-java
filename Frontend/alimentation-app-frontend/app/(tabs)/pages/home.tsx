@@ -2,7 +2,7 @@ import { View, Text, Button} from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 // Definir el tipo de las rutas disponibles en tu stack
-type RootStackParamList = {
+export type RootStackParamList = {
     Home: undefined;  // "Home" no tiene parámetros
     Register: undefined;  
     Login: undefined;  

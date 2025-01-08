@@ -1,8 +1,7 @@
 export const initialUser = {
     client_id: 0,
-    name: "",
-    last_name: "",
-    dni: "",
+    username: "",
+    email: "",
     token: "",
   };
 

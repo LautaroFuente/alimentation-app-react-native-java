@@ -7,21 +7,24 @@ import CalendarDiet from "./pages/calendar-diet";
 import LoginMenu from "./pages/login-menu";
 import ViewFoods from "./pages/view-foods";
 import ViewOneFood from "./pages/view-one-food";
+import { UserProvider } from './contexts/userContext';
 
 const Stack = createStackNavigator();
 
 export default function HomeScreen() {
   return (
+    <UserProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Calendar-diet" component={CalendarDiet} />
-        <Stack.Screen name="Login-menu" component={LoginMenu} />
-        <Stack.Screen name="View-foods" component={ViewFoods} />
-        <Stack.Screen name="View-one-food" component={ViewOneFood} />
+        <Stack.Screen name="CalendarDiet" component={CalendarDiet} />
+        <Stack.Screen name="LoginMenu" component={LoginMenu} />
+        <Stack.Screen name="ViewFoods" component={ViewFoods} />
+        <Stack.Screen name="ViewOneFood" component={ViewOneFood} />
       </Stack.Navigator>
     </NavigationContainer>
+    </UserProvider>
   );
 }

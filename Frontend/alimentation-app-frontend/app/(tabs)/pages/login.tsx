@@ -1,10 +1,22 @@
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import LoginForm from '../components/loginForm';
+import { RootStackParamList } from './home';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-function Login() {
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+  
+interface LoginProps {
+    navigation: LoginScreenNavigationProp;
+}
+
+const Login: React.FC<LoginProps> = ({ navigation }) => {
     return ( 
         <View>
-            <LoginForm />
+            <LoginForm navigation={navigation} />
+            <Button
+                title="Volver"
+                onPress={() => navigation.navigate('Home')}
+            />
         </View>
      );
 }

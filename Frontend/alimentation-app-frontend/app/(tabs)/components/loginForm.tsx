@@ -1,11 +1,19 @@
 import { Text, View, TextInput, Button } from "react-native";
 import { useForm } from "../hooks/useForm";
 import ErrorMessage from "./errorMessage";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigation } from "expo-router";
 import { fetchGeneric } from "../helpers/fetchGeneric.js";
-import { UserContext } from "../contexts/userContext";
 import { userSchema } from "../schemas/User";
+import { useUserContext } from "@/hooks/useUserContext";
+import { RootStackParamList } from '../pages/home';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type LoginFormScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+  
+interface LoginFormProps {
+    navigation: LoginFormScreenNavigationProp;
+}
 
 const initialForm = {
     email: "",
@@ -14,7 +22,7 @@ const initialForm = {
 
 const apiLoginUrl = "";
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC<LoginFormProps> = ({navigation}) => {
     const {form,
         errorForm,
         handleInputChange,
@@ -25,7 +33,7 @@ const LoginForm: React.FC = () => {
     const [formErrorServer, setFormErrorServer] = useState(false);  
     const [userNotRegistered, setUserNotRegistered] = useState({state:false, message:""});  
 
-    const {stateUser, dispatchUser} = useContext(UserContext);
+    const {stateUser, dispatchUser} = useUserContext();
 
     const navigate = useNavigation();
     
@@ -37,7 +45,7 @@ const LoginForm: React.FC = () => {
               state: false,
               message: "",
             });
-            const result = userSchema.parse(form);
+            const result = userSchema.safeParse(form);
             if (result.success) {
               try {
                 console.log(`Validacion correcta`);
@@ -58,13 +66,12 @@ const LoginForm: React.FC = () => {
                     type:"SET_CLIENT",
                     payload:{
                       client_id: data[0].client_id,
-                      name: data[0].name,
-                      last_name: data[0].last_name,
-                      dni: data[0].dni,
+                      username: data[0].username,
+                      email: data[0].email,
                       token,
                     }
                   })
-                  navigate("/pump");
+                  navigation.navigate('LoginMenu');
                 }
                 resetForm();
                 resetErrorForm();
@@ -77,7 +84,7 @@ const LoginForm: React.FC = () => {
             } else {
               console.log(`Falla validacion `);
               const errors = result.error.errors;
-              errors.forEach((error: ZodError) => {
+              errors.forEach((error) => {
                 handleErrorForm(error.path, error.message);
               });
             }
@@ -97,7 +104,8 @@ const LoginForm: React.FC = () => {
             <ErrorMessage message={errorForm.password}></ErrorMessage>
             )}
 
-            <Button>Enviar</Button>
+          <Button title="Enviar" onPress={() => {}} />
+
         </View>
      );
 }
