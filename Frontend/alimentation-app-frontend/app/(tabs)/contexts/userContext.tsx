@@ -1,10 +1,9 @@
 import { createContext, ReactNode, useReducer } from "react";
-import { initialUser, userReducer } from "../reducers/userReducer";
-import User from "../interfaces/User.interface";
+import { actionsUser, activeUser, initialUser, userReducer } from "../reducers/userReducer";
 
 type UserContextType = {
-  stateUser: User;
-  dispatchUser: React.Dispatch<any>;
+  stateUser: activeUser;
+  dispatchUser: React.Dispatch<actionsUser>;
 }
 
 export const UserContext = createContext<UserContextType | undefined>(undefined);

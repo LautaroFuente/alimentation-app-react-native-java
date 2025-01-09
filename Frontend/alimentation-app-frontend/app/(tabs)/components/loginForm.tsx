@@ -4,8 +4,8 @@ import ErrorMessage from "./errorMessage";
 import { useState } from "react";
 import { useNavigation } from "expo-router";
 import { fetchGeneric } from "../helpers/fetchGeneric.js";
-import { userSchema } from "../schemas/User";
-import { useUserContext } from "@/hooks/useUserContext";
+import { userLoginSchema } from "../schemas/User";
+import { useUserContext } from "@/app/(tabs)/hooks/useUserContext";
 import { RootStackParamList } from '../pages/home';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -34,18 +34,15 @@ const LoginForm: React.FC<LoginFormProps> = ({navigation}) => {
     const [userNotRegistered, setUserNotRegistered] = useState({state:false, message:""});  
 
     const {stateUser, dispatchUser} = useUserContext();
-
-    const navigate = useNavigation();
     
-        const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
+        const handleSubmit = async () => {
             resetErrorForm();
             setFormErrorServer(false);
             setUserNotRegistered({
               state: false,
               message: "",
             });
-            const result = userSchema.safeParse(form);
+            const result = userLoginSchema.safeParse(form);
             if (result.success) {
               try {
                 console.log(`Validacion correcta`);
@@ -63,9 +60,9 @@ const LoginForm: React.FC<LoginFormProps> = ({navigation}) => {
                 } else {
                   console.log("Inicio de sesion exitoso");
                   dispatchUser({
-                    type:"SET_CLIENT",
+                    type:"SET_USER",
                     payload:{
-                      client_id: data[0].client_id,
+                      id: data[0].id,
                       username: data[0].username,
                       email: data[0].email,
                       token,
@@ -85,7 +82,7 @@ const LoginForm: React.FC<LoginFormProps> = ({navigation}) => {
               console.log(`Falla validacion `);
               const errors = result.error.errors;
               errors.forEach((error) => {
-                handleErrorForm(error.path, error.message);
+                handleErrorForm(error.path.join('.'), error.message);
               });
             }
           };        
@@ -93,18 +90,18 @@ const LoginForm: React.FC<LoginFormProps> = ({navigation}) => {
     return ( 
         <View>
             <Text>Email</Text>
-            <TextInput value={form.email} onChangeText={handleInputChange}/>
+            <TextInput value={form.email} onChangeText={(text) => handleInputChange("email", text)}/>
             {errorForm.email && (
             <ErrorMessage message={errorForm.email}></ErrorMessage>
             )}
             
             <Text>Contraseña</Text>
-            <TextInput value={form.password} onChangeText={handleInputChange}/>
+            <TextInput value={form.password} onChangeText={(text) => handleInputChange("password", text)}/>
             {errorForm.password && (
             <ErrorMessage message={errorForm.password}></ErrorMessage>
             )}
 
-          <Button title="Enviar" onPress={() => {}} />
+          <Button title="Enviar" onPress={handleSubmit} />
 
         </View>
      );
