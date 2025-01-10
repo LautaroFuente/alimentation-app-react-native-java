@@ -10,6 +10,7 @@ export type RootStackParamList = {
     LoginMenu: undefined;
     ViewFoods: undefined;
     ViewOneFood: undefined;
+    Configuration: undefined;
   };
   
   // Tipar las props de navegación usando el tipo de tu stack

@@ -8,6 +8,7 @@ import LoginMenu from "./pages/login-menu";
 import ViewFoods from "./pages/view-foods";
 import ViewOneFood from "./pages/view-one-food";
 import { UserProvider } from './contexts/userContext';
+import Configuration from './pages/configuration';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ export default function HomeScreen() {
         <Stack.Screen name="LoginMenu" component={LoginMenu} />
         <Stack.Screen name="ViewFoods" component={ViewFoods} />
         <Stack.Screen name="ViewOneFood" component={ViewOneFood} />
+        <Stack.Screen name="Configuration" component={Configuration}>
       </Stack.Navigator>
     </NavigationContainer>
     </UserProvider>
