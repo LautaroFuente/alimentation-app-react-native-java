@@ -1,6 +1,5 @@
 package com.alimentation_app.alimentation_app.controller;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +64,6 @@ public class UsersController {
 		try {
 			Users existUser = this.userService.getOneUser(user.getEmail());
 			if( existUser == null) {
-				user.setRegistration_date(LocalDateTime.now());
 				this.userService.addUser(user);
 				return ResponseEntity.ok(new ApiResponseDTO<>(true, "Usuario guardado exitosamente", user));	
 			}else {

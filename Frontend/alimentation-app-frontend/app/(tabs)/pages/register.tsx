@@ -12,7 +12,7 @@ interface RegisterProps {
 const Register: React.FC<RegisterProps> = ({navigation}) => {
     return (
       <View>
-        <RegisterForm />
+        <RegisterForm navigation={navigation} />
         <Button
           title="Volver"
           onPress={() => navigation.navigate('Home')}
