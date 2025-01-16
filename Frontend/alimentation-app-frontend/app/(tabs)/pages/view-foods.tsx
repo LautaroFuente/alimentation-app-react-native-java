@@ -12,7 +12,7 @@ interface ViewFoodsProps {
 const ViewFoods: React.FC<ViewFoodsProps> = ({navigation}) => {
     return ( 
         <View>
-            <ListFoods></ListFoods>
+            <ListFoods foods={}></ListFoods>
         </View>
      );
 }

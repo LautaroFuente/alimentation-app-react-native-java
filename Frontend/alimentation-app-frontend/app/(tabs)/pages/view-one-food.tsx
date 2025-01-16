@@ -12,7 +12,7 @@ interface ViewOneFoodProps {
 const ViewOneFood: React.FC<ViewOneFoodProps> = ({navigation}) => {
     return ( 
         <View>
-            <CardFood></CardFood>
+            <CardFood food={}></CardFood>
         </View>
      );
 }
