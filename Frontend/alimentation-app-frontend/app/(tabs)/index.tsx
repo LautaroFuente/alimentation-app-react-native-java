@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from "./pages/home";
+import Home, { RootStackParamList } from "./pages/home";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import CalendarDiet from "./pages/calendar-diet";
@@ -10,7 +10,7 @@ import ViewOneFood from "./pages/view-one-food";
 import { UserProvider } from './contexts/userContext';
 import Configuration from './pages/configuration';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function HomeScreen() {
   return (
@@ -24,7 +24,7 @@ export default function HomeScreen() {
         <Stack.Screen name="LoginMenu" component={LoginMenu} />
         <Stack.Screen name="ViewFoods" component={ViewFoods} />
         <Stack.Screen name="ViewOneFood" component={ViewOneFood} />
-        <Stack.Screen name="Configuration" component={Configuration}>
+        <Stack.Screen name="Configuration" component={Configuration} />
       </Stack.Navigator>
     </NavigationContainer>
     </UserProvider>

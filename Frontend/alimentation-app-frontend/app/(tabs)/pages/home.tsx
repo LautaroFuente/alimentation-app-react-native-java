@@ -9,7 +9,7 @@ export type RootStackParamList = {
     CalendarDiet: undefined;
     LoginMenu: undefined;
     ViewFoods: undefined;
-    ViewOneFood: undefined;
+    ViewOneFood: { id: number };
     Configuration: undefined;
   };
   
