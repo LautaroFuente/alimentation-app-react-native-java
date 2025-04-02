@@ -1,9 +1,9 @@
 import { View } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "./home";
 import CardFood from "../components/CardFood";
 import { RouteProp } from "@react-navigation/native";
 import { useEffect } from "react";
+import { RootStackParamList } from "../Routes/RootStackParamList.type";
 
 type ViewOneFoodScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -16,7 +16,7 @@ interface ViewOneFoodProps {
   route: ViewOneFoodRouteProp;
 }
 
-const ViewOneFood: React.FC<ViewOneFoodProps> = ({ navigation, route }) => {
+const ViewOneFood = ({ navigation, route }: ViewOneFoodProps) => {
   const { id } = route.params;
 
   // Metodo que se ejecuta solo una vez al cargar el componente para traer del backend los datos necesarios (alimento con el id recibido)

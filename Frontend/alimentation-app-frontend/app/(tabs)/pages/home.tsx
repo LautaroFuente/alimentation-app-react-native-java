@@ -1,6 +1,6 @@
 import { View, Text, Button } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "@/app/Routes/RootStackParamList.type";
+import { RootStackParamList } from "../Routes/RootStackParamList.type";
 
 // Tipar las props de navegación usando el tipo de tu stack
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
