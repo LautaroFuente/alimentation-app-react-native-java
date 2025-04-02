@@ -6,7 +6,7 @@ import { fetchGeneric } from "../helpers/fetchGeneric";
 import { userLoginSchema } from "../schemas/User";
 import { useUserContext } from "@/app/(tabs)/hooks/useUserContext";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "@/app/Routes/RootStackParamList.type";
+import { RootStackParamList } from "../Routes/RootStackParamList.type";
 
 type LoginFormScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

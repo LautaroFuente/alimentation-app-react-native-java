@@ -16,22 +16,20 @@ const Stack = createStackNavigator<RootStackParamList>();
 export default function HomeScreen() {
   return (
     <UserProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="CalendarDiet" component={CalendarDiet} />
-          <Stack.Screen name="LoginMenu" component={LoginMenu} />
-          <Stack.Screen name="ViewFoods" component={ViewFoods} />
-          <Stack.Screen
-            name="ViewOneFood"
-            component={ViewOneFood}
-            initialParams={{ id: 0 }}
-          />
-          <Stack.Screen name="Configuration" component={Configuration} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="CalendarDiet" component={CalendarDiet} />
+        <Stack.Screen name="LoginMenu" component={LoginMenu} />
+        <Stack.Screen name="ViewFoods" component={ViewFoods} />
+        <Stack.Screen
+          name="ViewOneFood"
+          component={ViewOneFood}
+          initialParams={{ id: 0 }}
+        />
+        <Stack.Screen name="Configuration" component={Configuration} />
+      </Stack.Navigator>
     </UserProvider>
   );
 }
