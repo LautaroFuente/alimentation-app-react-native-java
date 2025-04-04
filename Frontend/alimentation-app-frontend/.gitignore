@@ -36,3 +36,6 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+# Example with react navigation without expo router
+app/(with-react-navigation-without-expo-router)

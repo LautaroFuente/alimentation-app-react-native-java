@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "./home";
+import { RootStackParamList } from "../home";
 import ListFoods from "../components/ListFoods";
 import { useEffect } from "react";
 
