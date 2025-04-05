@@ -1,22 +1,14 @@
+import { useRouter } from "expo-router";
 import { View, Button } from "react-native";
-import RegisterForm from "../components/registerForm";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../Routes/RootStackParamList.type";
+import RegisterForm from "./components/registerForm";
 
-type RegisterScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  "Register"
->;
+const Register = () => {
+  const router = useRouter();
 
-interface RegisterProps {
-  navigation: RegisterScreenNavigationProp;
-}
-
-const Register = ({ navigation }: RegisterProps) => {
   return (
     <View>
-      <RegisterForm navigation={navigation} />
-      <Button title="Volver" onPress={() => navigation.navigate("Home")} />
+      <RegisterForm />
+      <Button title="Volver" onPress={() => router.push("/")} />
     </View>
   );
 };
