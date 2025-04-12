@@ -4,9 +4,9 @@ import ErrorMessage from "./errorMessage";
 import { useState } from "react";
 import { fetchGeneric } from "../helpers/fetchGeneric";
 import { userLoginSchema } from "../schemas/User";
-import { useUserContext } from "@/app/(tabs)/hooks/useUserContext";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../Routes/RootStackParamList.type";
+import { useUserContext } from "../hooks/useUserContext";
 
 type LoginFormScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
